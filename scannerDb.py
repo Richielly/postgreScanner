@@ -2,7 +2,7 @@ import psycopg2
 
 class ScannerDb:
 
-    def count_rows_all_tables(self, db_name='FrotasCasteloBranco', user='FrotasCasteloBranco', password='es74079', host='localhost', port='5432'):
+    def count_rows_all_tables(self, db_name='Nota_Terra_Rica', user='Nota_Terra_Rica', password='es74079', host='localhost', port='5432'):
         results = []
         try:
             # Establish a connection to the database
@@ -34,7 +34,7 @@ class ScannerDb:
 
         return results
 
-    def search_table_for_value(self, table_name, search_value, db_name='FrotasCasteloBranco', user='FrotasCasteloBranco', password='es74079', host='localhost', port='5432'):
+    def search_table_for_value(self, table_name, search_value, db_name='Nota_Terra_Rica', user='Nota_Terra_Rica', password='es74079', host='localhost', port='5432'):
         try:
             # Establish a connection to the database
             conn = psycopg2.connect(dbname=db_name, user=user, password=password, host=host, port=port)
@@ -42,11 +42,13 @@ class ScannerDb:
             with conn:
                 with conn.cursor() as cur:
                     # Get all column names in the table
+
                     cur.execute(f"""
                         SELECT column_name
                         FROM information_schema.columns
                         WHERE table_name = '{table_name.split('.')[1]}'
                     """)
+
                     columns = cur.fetchall()
 
                     for column in columns:

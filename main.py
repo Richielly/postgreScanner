@@ -26,7 +26,7 @@ def main(page: ft.Page):
                     if table[0]:
                         if scan.search_table_for_value(table[0], txt_palavra.value):
                             print(scan.search_table_for_value(table[0], txt_palavra.value))
-                            list_arquivos.controls.append(ft.Text(f'select : ' + scan.search_table_for_value(table[0], txt_palavra.value),size=16, color=ft.colors.GREEN))
+                            list_arquivos.controls.append(ft.Text(f'select : ' + scan.search_table_for_value(table[0], txt_palavra.value),selectable=True,size=16, color=ft.colors.GREEN))
                             list_arquivos.update()
             list_arquivos.controls.append(ft.Text(f'Consulta finalizada.',size=16, color=ft.colors.BLUE_900))
             list_arquivos.update()
